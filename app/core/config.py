@@ -1,6 +1,7 @@
 import os
+from typing import List
 
-from pydantic import BaseSettings
+from pydantic import BaseSettings, AnyHttpUrl
 
 
 env = os.getenv("ENV") or "development"
@@ -10,6 +11,12 @@ env_dir = os.getenv("ENV_DIR") or os.getcwd()
 class Settings(BaseSettings):
     ENVIRONMENT: str
     APP_NAME: str
+    API_V1_STR: str = "/api/v1"
+
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
+
+    MONGODB_URL: str
+    MONGODB_NAME: str
 
     class Config:
         env_file_encoding = "utf-8"

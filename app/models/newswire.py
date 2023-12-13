@@ -6,3 +6,4 @@ class Newswire(BaseModel):
     title: str
     text: str
     created_at: str
+    notify_on_insert: bool
