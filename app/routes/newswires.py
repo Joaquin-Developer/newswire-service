@@ -1,11 +1,24 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, BackgroundTasks
+
+from app.models.newswire import Newswire
 
 
 newswires_router = APIRouter()
 
 
 @newswires_router.post("/create")
-def create_newswire():
+async def create_newswire(new: Newswire, background_tasks: BackgroundTasks):
+    # Logica para crear (insertar en MongoDB)
+
+    if new.notify_on_insert:
+        # mandar mails en segundo plano
+
+        def background_task():
+            print("Hi")
+
+        background_tasks.add_task(background_task, "notify_mails")
+        return {"message": "OK. Sending mails..."}
+
     return {"message": "ok"}
 
 

@@ -18,6 +18,11 @@ class Settings(BaseSettings):
     MONGODB_URL: str
     MONGODB_NAME: str
 
+    SMTP_USERNAME: str
+    SMTP_PASSWORD: str
+    SMTP_SERVER: str
+    SMTP_PORT: int
+
     class Config:
         env_file_encoding = "utf-8"
         case_sensitive = True
