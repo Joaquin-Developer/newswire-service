@@ -2,3 +2,4 @@ requests
 fastapi
 pydantic
 motor
+celery
